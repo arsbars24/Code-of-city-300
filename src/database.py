@@ -16,14 +16,9 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 #создаем базовый класс для моделей
 Base = declarative_base()
 
-<<<<<<< HEAD:src/database.py
 class User(Base):
     __tablename__ = "people"
  
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
     age = Column(Integer,)
-
-    
-=======
->>>>>>> e0625bfef65752cab0d4b5c5ec81d5fc0fb9c75a:src/db/database.py
