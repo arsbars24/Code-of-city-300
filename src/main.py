@@ -1,27 +1,22 @@
-from os import environ
 from fastapi import FastAPI
-
+from fastapi.responses import FileResponse
 import databases
-
-from databases import Database
-
-database = Database("sqlite:///C:\Users\Arsbars24\OneDrive\Рабочий стол\code_of_city\Code-of-city-300\CODE300.db")
+from db import database
 app = FastAPI()
 
 
+
 @app.on_event("startup")
-async def database_connect():
+async def startup():
+    # когда приложение запускается устанавливаем соединение с БД
     await database.connect()
 
 
 @app.on_event("shutdown")
-async def database_disconnect():
+async def shutdown():
+    # когда приложение останавливается разрываем соединение с БД
     await database.disconnect()
 
-
-@app.post("/test")
-async def fetch_data(id: int):
-    query = "SELECT * FROM tablename WHERE ID={}".format(str(id))
-    results = await database.fetch_all(query=query)
-
-    return  results
+@app.get("/file/download")
+def download_file():
+  return FileResponse(path='data.xlsx', filename='Статистика покупок.xlsx', media_type='multipart/form-data')
