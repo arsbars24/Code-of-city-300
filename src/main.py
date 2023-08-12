@@ -1,5 +1,5 @@
-from database import SessionLocal, Base, engine
-from models import Events, Reg_on_events, Company, Users, Materials
+from database import *
+from models import *
 from sqlalchemy.orm import Session
 from fastapi import Depends, FastAPI, Body
 from fastapi.responses import JSONResponse, FileResponse
