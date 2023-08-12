@@ -15,3 +15,12 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 #создаем базовый класс для моделей
 Base = declarative_base()
+
+class User(Base):
+    __tablename__ = "people"
+ 
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String)
+    age = Column(Integer,)
+
+    
