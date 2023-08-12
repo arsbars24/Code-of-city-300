@@ -1,8 +1,9 @@
-from database import *
-from models import *
+from .database import *
+from .models import *
 from sqlalchemy.orm import Session
 from fastapi import Depends, FastAPI, Body
 from fastapi.responses import JSONResponse, FileResponse
+from fastapi import HTTPException
  
 # создаем таблицы
 Base.metadata.create_all(bind=engine)
