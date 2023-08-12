@@ -7,8 +7,8 @@ class Events(Base):
 
 
     event_id = Column(Integer, primary_key=True, index=True)
-    event_name = Column(Integer)
-    org_id = Column(Integer, primary_key=True, index=True)
+    event_name = Column(text)
+    company_id = Column(Integer, primary_key=True, index=True)
     sponsor = Column(text)
     description = Column(text)
     materials_id = Column(Integer, primary_key=True, index=True)
@@ -34,11 +34,12 @@ class Reg_on_events(Base):
     company_id = Column(Integer, primary_key=True, index=True)
 
 
-class User(Base):
-    __tabelname__ = "user"
+class Users(Base):
+    __tabelname__ = "users"
 
     user_id = Column(Integer, primary_key=True, index=True, unique=True)
-    full_name = Column(String, unique=True)
+    name = Column(text, unique=True)
+    surname = Column(text,unique=True)
     email = Column(text, unique=True)
     password = Column(text)
 
@@ -49,3 +50,4 @@ class Company(Base):
     company_id = Column(Integer, primary_key = True, index = True)
     inn = Column(Integer, primary_key = True)
     email = Column(text, primary_key = True)
+
